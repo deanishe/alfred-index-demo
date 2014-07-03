@@ -93,7 +93,7 @@ def main(wf):
         results = cursor.fetchall()
     except sqlite3.OperationalError as err:
         # If the query is invalid, show an appropriate warning and exit
-        if 'malformed MATCH' in err.message:
+        if b'malformed MATCH' in err.message:
             wf.add_item('Invalid query', icon=ICON_WARNING)
             wf.send_feedback()
             return
