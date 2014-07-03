@@ -30,7 +30,11 @@ log = None
 # Search ranking function
 # Adapted from http://goo.gl/4QXj25 and http://goo.gl/fWg25i
 def make_rank_func(weights):
-    """`weights` is a list or tuple of the relative ranking per column"""
+    """`weights` is a list or tuple of the relative ranking per column.
+
+    Use floats (1.0 not 1) for more accurate results. Use 0 to ignore a
+    column.
+    """
     def rank(matchinfo):
         # matchinfo is defined as returning 32-bit unsigned integers
         # in machine byte order
@@ -73,21 +77,36 @@ def main(wf):
 
     # Search!
     db = sqlite3.connect(INDEX_DB)
-    db.row_factory = sqlite3.Row
-    db.create_function('rank', 1, make_rank_func((1.0, 1.0, 1.0)))
+    # Set ranking function with weightings for each column.
+    # `make_rank_function` must be called with a tuple/list of the same
+    # length as the number of columns "selected" from the database.
+    # In this case, `url` is set to 0 because we don't want to search on
+    # that column
+    db.create_function('rank', 1, make_rank_func((1.0, 1.0, 0)))
     cursor = db.cursor()
-    cursor.execute("""SELECT author, title FROM
-                        (SELECT rank(matchinfo(search)) AS r, author, title
-                        FROM search WHERE search MATCH ?)
-                      ORDER BY r DESC LIMIT 100""", (query,))
-    results = cursor.fetchall()
+    try:
+        cursor.execute("""SELECT author, title, url FROM
+                            (SELECT rank(matchinfo(books))
+                             AS r, author, title, url
+                             FROM books WHERE books MATCH ?)
+                          ORDER BY r DESC LIMIT 100""", (query,))
+        results = cursor.fetchall()
+    except sqlite3.OperationalError as err:
+        # If the query is invalid, show an appropriate warning and exit
+        if 'malformed MATCH' in err.message:
+            wf.add_item('Invalid query', icon=ICON_WARNING)
+            wf.send_feedback()
+            return
+        # Otherwise raise error for Workflow to catch and log
+        else:
+            raise err
 
     if not results:
         wf.add_item('No matches', 'Try a different query', icon=ICON_WARNING)
 
-    for (author, title) in results:
-        wf.add_item(title, author, valid=True,
-                    icon='icon.png')
+    # Output results to Alfred
+    for (author, title, url) in results:
+        wf.add_item(title, author, valid=True, arg=url, icon='icon.png')
 
     wf.send_feedback()
 

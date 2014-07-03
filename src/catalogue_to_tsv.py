@@ -9,6 +9,16 @@
 #
 
 """
+Convert the Gutenberg RDF data dump to a TSV file.
+
+The script expects the data dump from
+http://www.gutenberg.org/wiki/Gutenberg:Feeds#The_Complete_Project_Gutenberg_Catalog
+to be extracted into the same directory (i.e. the `epub` directory is
+in the same directory as this script.)
+
+Usage:
+
+python catalogue_to_tsv.py > books.tsv
 """
 
 from __future__ import print_function, unicode_literals
@@ -26,7 +36,6 @@ NS_RDF = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}'
 resource_tag = '{http://www.w3.org/1999/02/22-rdf-syntax-ns#}resource'
 title_tag = '//{}title'.format(NS_DC)
 author_tag = '//{}creator/{}agent/{}name'.format(NS_DC, NS_PG, NS_PG)
-# hasFormat_tag = './/{http://purl.org/dc/terms/}hasFormat'
 book_id_tag = '//{}isFormatOf'.format(NS_DC)
 book_id_attrib = '{}resource'.format(NS_RDF)
 
