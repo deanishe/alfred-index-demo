@@ -2,6 +2,8 @@
 
 Search the index of Project Gutenberg ebooks from Alfred.
 
+![](https://github.com/deanishe/alfred-index-demo/raw/master/demo.gif "")
+
 Demonstrates the usage of sqlite full-text search in a workflow and the blinding speed this offers.
 
 ## Usage ##
