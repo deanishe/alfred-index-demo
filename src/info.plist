@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>net.deanishe.alfred-index-demo</string>
+	<key>connections</key>
+	<dict>
+		<key>E2E84778-9472-48A7-851A-87F07879DA5C</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>D56B2A64-50BA-464C-8D64-48EB68D5B376</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Dean Jackson</string>
+	<key>description</key>
+	<string>Search Gutenberg.org Book Catalogue</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Gutenberg Book Search</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>plusspaces</key>
+				<false/>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>D56B2A64-50BA-464C-8D64-48EB68D5B376</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>books</string>
+				<key>runningsubtext</key>
+				<string>Searching books…</string>
+				<key>script</key>
+				<string>/usr/bin/python books.py "{query}"</string>
+				<key>title</key>
+				<string>Search Gutenberg Book Catalogue</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>E2E84778-9472-48A7-851A-87F07879DA5C</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string></string>
+	<key>uidata</key>
+	<dict>
+		<key>D56B2A64-50BA-464C-8D64-48EB68D5B376</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+		<key>E2E84778-9472-48A7-851A-87F07879DA5C</key>
+		<dict>
+			<key>ypos</key>
+			<real>10</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string></string>
+</dict>
+</plist>
