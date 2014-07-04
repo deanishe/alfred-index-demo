@@ -106,8 +106,8 @@ def main(wf):
     if not results:
         wf.add_item('No matches', 'Try a different query', icon=ICON_WARNING)
 
-    log.info('Search for `{}` finished in {:0.3f} seconds'.format(
-             query, time() - start))
+    log.info('{} results for `{}` in {:0.3f} seconds'.format(
+             len(results), query, time() - start))
 
     # Output results to Alfred
     for (author, title, url) in results:
