@@ -16,6 +16,7 @@ from __future__ import print_function, unicode_literals
 import sys
 import os
 import struct
+from time import time
 
 import sqlite3
 
@@ -76,6 +77,7 @@ def main(wf):
                     icon=ICON_INFO)
 
     # Search!
+    start = time()
     db = sqlite3.connect(INDEX_DB)
     # Set ranking function with weightings for each column.
     # `make_rank_function` must be called with a tuple/list of the same
@@ -103,6 +105,9 @@ def main(wf):
 
     if not results:
         wf.add_item('No matches', 'Try a different query', icon=ICON_WARNING)
+
+    log.info('Search for `{}` finished in {:0.3f} seconds'.format(
+             query, time() - start))
 
     # Output results to Alfred
     for (author, title, url) in results:

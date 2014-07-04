@@ -67,7 +67,7 @@ def update_index_db():
                             books (id, author, title, url)
                             VALUES (?, ?, ?, ?)
                             """, (id_, author, title, url))
-                log.info('Added {} by {} to database'.format(title, author))
+                # log.info('Added {} by {} to database'.format(title, author))
                 count += 1
     log.info('{} items added/updated in {:0.3} seconds'.format(
              count, time() - start))
