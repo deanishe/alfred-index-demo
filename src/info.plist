@@ -33,6 +33,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>{query}</string>
+				<key>utf8</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>D56B2A64-50BA-464C-8D64-48EB68D5B376</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -44,7 +63,7 @@
 				<key>escaping</key>
 				<integer>102</integer>
 				<key>keyword</key>
-				<string>besser</string>
+				<string>books</string>
 				<key>queuedelaycustom</key>
 				<integer>1</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -56,9 +75,9 @@
 				<key>runningsubtext</key>
 				<string>Searching books…</string>
 				<key>script</key>
-				<string>/usr/bin/python books.py "{query}"</string>
+				<string>/usr/bin/python books.py "$1"</string>
 				<key>scriptargtype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>scriptfile</key>
 				<string></string>
 				<key>subtext</key>
@@ -77,25 +96,6 @@
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string>{query}</string>
-				<key>utf8</key>
-				<true/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>D56B2A64-50BA-464C-8D64-48EB68D5B376</string>
-			<key>version</key>
-			<integer>1</integer>
-		</dict>
 	</array>
 	<key>readme</key>
 	<string></string>
@@ -103,6 +103,8 @@
 	<dict>
 		<key>D56B2A64-50BA-464C-8D64-48EB68D5B376</key>
 		<dict>
+			<key>note</key>
+			<string>Open book page in browser</string>
 			<key>xpos</key>
 			<integer>240</integer>
 			<key>ypos</key>
@@ -110,12 +112,16 @@
 		</dict>
 		<key>E2E84778-9472-48A7-851A-87F07879DA5C</key>
 		<dict>
+			<key>note</key>
+			<string>Search Gutenberg.org ebooks</string>
 			<key>xpos</key>
 			<integer>40</integer>
 			<key>ypos</key>
 			<integer>30</integer>
 		</dict>
 	</dict>
+	<key>version</key>
+	<string>1.4</string>
 	<key>webaddress</key>
 	<string></string>
 </dict>

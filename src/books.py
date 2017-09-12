@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 #
-# Copyright © 2014 deanishe@deanishe.net
+# Copyright (c) 2014 deanishe@deanishe.net
 #
 # MIT Licence. See http://opensource.org/licenses/MIT
 #
 # Created on 2014-07-03
 #
 
-"""
-"""
+"""Workflow Script Filter to show search results in Alfred."""
 
 from __future__ import print_function, unicode_literals
 
@@ -42,10 +41,10 @@ def make_rank_func(weights):
         # http://www.sqlite.org/fts3.html#matchinfo
         # and struct defaults to machine byte order
         bufsize = len(matchinfo)  # Length in bytes.
-        matchinfo = [struct.unpack(b'I', matchinfo[i:i+4])[0]
+        matchinfo = [struct.unpack(b'I', matchinfo[i:i + 4])[0]
                      for i in range(0, bufsize, 4)]
         it = iter(matchinfo[2:])
-        return sum(x[0]*w/x[1]
+        return sum(x[0] * w / x[1]
                    for x, w in zip(zip(it, it, it), weights)
                    if x[1])
     return rank

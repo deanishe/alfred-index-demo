@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 # encoding: utf-8
 #
-# Copyright © 2014 deanishe@deanishe.net
+# Copyright (c) 2014 deanishe@deanishe.net
 #
 # MIT Licence. See http://opensource.org/licenses/MIT
 #
 # Created on 2014-07-03
 #
 
-"""
-Read in data from `books.tsv` and add it to the search index database.
+"""Read in data from `books.tsv` and add it to the search index database.
 
 See `catalogue_to_tsv.py` for the generation of the `books.tsv` file.
 """
@@ -58,8 +57,8 @@ def update_index_db():
     count = 0
     with con:
         cur = con.cursor()
-        with open(DATA_FILE, 'rb') as file:
-            reader = csv.reader(file, delimiter=b'\t')
+        with open(DATA_FILE, 'rb') as fp:
+            reader = csv.reader(fp, delimiter=b'\t')
             for row in reader:
                 id_, author, title, url = [v.decode('utf-8') for v in row]
                 id_ = int(id_)

@@ -1,4 +1,5 @@
-# Alfred/sqlite demo workflow #
+Alfred/sqlite demo workflow
+===========================
 
 Search the index of Project Gutenberg ebooks from Alfred.
 
@@ -6,7 +7,14 @@ Search the index of Project Gutenberg ebooks from Alfred.
 
 Demonstrates the usage of sqlite full-text search in a workflow and the blinding speed this offers.
 
-## Usage ##
+Download
+--------
+
+Grab the workflow from [GitHub releases][latest].
+
+
+Usage
+-----
 
 - `books <query>` — Search the Gutenberg catalogue for `<query>`
 
@@ -17,7 +25,9 @@ You can use wildcard, boolean and field-specific queries:
 - `books criti*`
 - `books title:criti* AND author:kant`
 
-## How fast? ##
+
+How fast?
+---------
 
 Here's some sample log output using [a database of ~45,000 ebooks](https://raw.githubusercontent.com/deanishe/alfred-index-demo/master/src/books.tsv) from [Project Gutenberg](http://www.gutenberg.org/):
 
@@ -89,3 +99,5 @@ Here's some sample log output using [a database of ~45,000 ebooks](https://raw.g
 11:11:20 books.py:110 INFO     0 results for `philosophy author:aristotle` in 0.002 seconds
 11:11:22 books.py:110 INFO     15 results for `author:aristotle` in 0.002 seconds
 ```
+
+[latest]: https://github.com/deanishe/alfred-index-demo/releases/latest
